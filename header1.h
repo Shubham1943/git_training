@@ -1,3 +1,5 @@
-#include<stdio.h?
-#include<conio.h?
-print("test.sh")
+#include<conio.h>
+#include<stdio.h>
+print("testing component")
+print("child look")
+
