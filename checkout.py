@@ -12,7 +12,12 @@ def checkout():
   if(driver.find_element_by_xpath("//*[@id="header_container"]/div[2]/span).is_displayed()):
     driver.find.element_by_path("//*[@id="checkout"]").click()
     if(driver.find.element_by_path("//*[@id="header_container"]/div[2]/span")):
+      driver.find_element_by_path("//*[@id="first-name"]").send_keys="Shubham"
+      driver.find_element_by_path("//*[@id="last-name"]").send_keys="Katare"
+      driver.find_element_by_path("//*[@id="postal-code"]").send_keys="231001"
       driver.find.element_by_path("//*[@id="continue"]").click()
   else:
   print("Error in loading")
+
+  
   
