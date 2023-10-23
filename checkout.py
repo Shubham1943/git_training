@@ -11,18 +11,19 @@ time.sleep(5)
 def checkout():
   if(driver.find_element_by_xpath("//*[@id="header_container"]/div[2]/span).is_displayed()):
     driver.find.element_by_path("//*[@id="checkout"]").click()
-    try:
-    if(driver.find.element_by_path("//*[@id="header_container"]/div[2]/span")):
-      f_fname=driver.find_element_by_path("//*[@id="first-name"]").send_keys="Shubham"
-      f_lname=driver.find_element_by_path("//*[@id="last-name"]").send_keys="Katare"
-      f_postal=driver.find_element_by_path("//*[@id="postal-code"]").send_keys="231001"
-      driver.find.element_by_path("//*[@id="continue"]").click()
-    except ValueError:
-      print("First Name is required") 
-    elif f_fname!=Null:
-      print("Last Name is required") 
-    else:
-      print(" Postal Code is required")
+      try:
+      if(driver.find.element_by_path("//*[@id="header_container"]/div[2]/span")):
+        f_fname=driver.find_element_by_path("//*[@id="first-name"]").send_keys="Shubham"
+        f_lname=driver.find_element_by_path("//*[@id="last-name"]").send_keys="Katare"
+        f_postal=driver.find_element_by_path("//*[@id="postal-code"]").send_keys="231001"
+        driver.find.element_by_path("//*[@id="continue"]").click()
+      except ValueError:
+        print("First Name is required") 
+      elif f_fname!=Null:
+        print("Last Name is required") 
+      else:
+        print(" Postal Code is required")
+     driver.find.element_by_path("//*[@id="finish"]").click()
   else:
   print("Error in loading")
 
