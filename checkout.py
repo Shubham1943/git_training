@@ -1,31 +1,31 @@
-from selenium import webdriver
+*** Settings ***
 
-driver=webdriver.Chrome(executable_path="D:\\Documents\\chromwdriver.exe")
-driver.maximize_window()
-driver.get("https://www.saucedemo.com/")
-driver.find_element_by_path("//input[@id='user-name']").send_keys="standard_user"
-driver.find_element_by_path("//input[@id='password']").send_keys="secret_sauce"
-driver.find.element_by_path("//input[@id='login-button']").click()
-time.sleep(5)
+Library SeleniumLibrary
 
-def checkout():
-  if(driver.find_element_by_xpath("//*[@id="header_container"]/div[2]/span).is_displayed()):
-    driver.find.element_by_path("//*[@id="checkout"]").click()
-      try:
-      if(driver.find.element_by_path("//*[@id="header_container"]/div[2]/span")):
-        f_fname=driver.find_element_by_path("//*[@id="first-name"]").send_keys="Shubham"
-        f_lname=driver.find_element_by_path("//*[@id="last-name"]").send_keys="Katare"
-        f_postal=driver.find_element_by_path("//*[@id="postal-code"]").send_keys="231001"
-        driver.find.element_by_path("//*[@id="continue"]").click()
-      except ValueError:
-        print("First Name is required") 
-      elif f_fname!=Null:
-        print("Last Name is required") 
-      else:
-        print(" Postal Code is required")
-     driver.find.element_by_path("//*[@id="finish"]").click()
-  else:
-  print("Error in loading")
+*** Variables ***
+${browser}  chrome
+${url}  xx-x-x--x\chromedriver.exe
 
-  
-  
+*** Test Cases ***
+Checkout
+    create webdriver    chrome  executable_path="xx-x-x--x\chromedriver.exe"
+    Open browser    ${url}  ${browser}
+    maximize browser window
+    input text      id:user-name    standard_user
+    input text      id:password     secret_sauce
+    click element   xpath://input[@id='login-button']
+    click element   xpath://a[@class='shopping_cart_link']
+    
+    title should be     'Your Cart'
+    click element   xpath://*[@id="checkout"]
+    
+    sleep   5
+    
+    input text  name:firstName      demo
+    input text  name:lastName       Kumar
+    input text  name:postalCode     434343
+    
+    click element   xpath://*[@id="continue"]
+    click element   xpath://*[@id="finish"]
+    
+    close browser
