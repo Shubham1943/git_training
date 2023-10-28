@@ -3,16 +3,28 @@
 Library SeleniumLibrary
 
 *** Variables ***
+
 ${browser}  chrome
-${url}  xx-x-x--x\chromedriver.exe
+${url}      xx-x-x--x\chromedriver.exe
+${STRING}   secret_sauce
+@{LIST}     standard_user   locked_out_user     problem_user    performance_glitch_user     error_user      visual_user
+&{DICT}     string=${STRING}    lsit=@{LIST}
+
 
 *** Test Cases ***
+
 LoginTest
     create webdriver    chrome  executable_path="xx-x-x--x\chromedriver.exe"
     Open browser    ${url}  ${browser}
     maximize browser window
-    input text      id:user-name    standard_user
-    input text      id:password     secret_sauce
+
+Loop_a_DICT
+    Log     ${DICT}
+    FOR     ${key_value_tuple}     IN      @{DICT} 
+        Log     ${key}=${DICT}[${key}]
+        input text      id:user-name    ${key}
+        input text      id:password     secret_sauce
+    END
     click element   xpath://input[@id='login-button']
     close browser
     
