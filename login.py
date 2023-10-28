@@ -11,3 +11,16 @@ if(driver.find_element_by_xpath("//div[text()='Swag Labs']"].is_displayed()):
   print("Successfully Loggedin")
 else:
   print("Login failed")
+
+
+*** Setting ***
+Library SeleniumLibrary
+
+*** Variables ***
+
+*** Test Cases ***
+Login Test
+  create webdriver  chrome  executavl
+  
+
+*** Keywords ***
