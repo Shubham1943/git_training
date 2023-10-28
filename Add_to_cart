@@ -1,22 +1,30 @@
-from selenium import webdriver
+*** Settings ***
 
-driver=webdriver.Chrome(executable_path="D:\\Documents\\chromwdriver.exe")
-driver.maximize_window()
-driver.get("https://www.saucedemo.com/")
-driver.find_element_by_path("//input[@id='user-name']").send_keys="standard_user"
-driver.find_element_by_path("//input[@id='password']").send_keys="secret_sauce"
-driver.find.element_by_path("//input[@id='login-button']").click()
+Library SeleniumLibrary
 
-time.sleep(5)
+*** Variables ***
+${browser}  chrome
+${url}  xx-x-x--x\chromedriver.exe
 
-def add_to_cart():
-  driver.find.element_by_xpath("//*[@name="add-to-cart-sauce-labs-backpack"]").click()
-
-def remove_from_cart():
-  driver.find.element_by_xpath("//*[@name="remove-sauce-labs-backpack"]").click()
-
-def remove_from_cartpage():
-  driver.find.element_xpath("//*[@class="shopping_cart_link"]").click()
-  time.sleep(5)
-  driver.find.element_by_xpath("//*[@id="remove-sauce-labs-backpack"]").click()
-
+*** Test Cases ***
+add_to_cart
+    create webdriver    chrome  executable_path="xx-x-x--x\chromedriver.exe"
+    Open browser    ${url}  ${browser}
+    maximize browser window
+    input text      id:user-name    standard_user
+    input text      id:password     secret_sauce
+    click element   xpath://input[@id='login-button']
+    
+    click element   xpath://input[@id='add-to-cart-sauce-labs-backpack']
+    click element   xpath://input[@id='add-to-cart-sauce-labs-bike-light']
+    click element   xpath://input[@id='add-to-cart-sauce-labs-bolt-t-shirt']
+    click element   xpath://input[@id='add-to-cart-sauce-labs-fleece-jacket']
+    click element   xpath://input[@id='add-to-cart-sauce-labs-onesie']
+    click element   xpath://input[@id='add-to-cart-test.allthethings()-t-shirt-(red)']
+    
+    click element   xpath://a[@class='shopping_cart_link']
+    
+    title should be     'Your Cart'
+    
+    click element   xpath://input[@id='//continue-shopping']
+    
