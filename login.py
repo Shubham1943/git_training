@@ -1,3 +1,4 @@
+
 *** Settings ***
 
 Library SeleniumLibrary
@@ -8,7 +9,7 @@ ${browser}  chrome
 ${url}      xx-x-x--x\chromedriver.exe
 ${STRING}   secret_sauce
 @{LIST}     standard_user   locked_out_user     problem_user    performance_glitch_user     error_user      visual_user
-&{DICT}     string=${STRING}    lsit=@{LIST}
+&{DICT}     string=${STRING}    list=@{LIST}
 
 
 *** Test Cases ***
@@ -23,7 +24,7 @@ Loop_a_DICT
     FOR     ${key_value_tuple}     IN      @{DICT} 
         Log     ${key}=${DICT}[${key}]
         input text      id:user-name    ${key}
-        input text      id:password     secret_sauce
+        input text      id:password     ${STRING}
     END
     click element   xpath://input[@id='login-button']
     close browser
