@@ -39,11 +39,11 @@ Hamburger_icon
      
         Log     ${key}=${HAMB_DICT}[${key}]
         
-        IF      ${ALL Items}    IN      ${HAMB_LIST}
+        IF      ${ALL Items}.click()    IN      ${HAMB_LIST}
             Log     "https://www.saucedemo.com/inventory.html"
-        ELIF    ${About}        IN      ${HAMB_LIST}
+        ELIF    ${About}.click()        IN      ${HAMB_LIST}
             Log     "https://saucelabs.com/"
-        ELIF    ${Logout}       IN      ${HAMB_LIST}
+        ELIF    ${Logout}.click()       IN      ${HAMB_LIST}
             Log     "https://www.saucedemo.com/"
         ELSE 
             Log     "https://www.saucedemo.com/inventory.html"
