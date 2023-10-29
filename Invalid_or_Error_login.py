@@ -18,6 +18,9 @@ InvvalidLoginTest
     create webdriver    chrome  executable_path="xx-x-x--x\chromedriver.exe"
     Open browser    ${url}  ${browser}
     maximize browser window
+    
+    element should be visible   ${username}  
+    element should be visible   ${password}
 
     Log     ${DICT}
     FOR     ${key_value_tuple}     IN      @{DICT} 
